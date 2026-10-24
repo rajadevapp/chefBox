@@ -1,0 +1,320 @@
+
+:root {
+  --green: #243d32;
+  --green-light: #385747;
+  --cream: #fffdf8;
+  --cream-dark: #f5f0e7;
+  --orange: #df7743;
+  --orange-dark: #bf5e2e;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+#category{
+    width: 100%;
+    height: auto;
+}
+.category{
+    width: 80%;
+    margin: 20px auto;
+}
+.category__filter{
+    width: 90%;
+    margin:20px auto;
+}
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+}
+.category__filter-search-box{
+    border: 1px solid rgba(41, 39, 36, 0.20);
+    width: 700px;
+    height: 45px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+.category__filter-search-box input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 20px;
+}
+.select-filter{
+  display: flex;
+   gap:20px;
+}
+.rest-filter-label{
+  display: none;
+}
+ .select-box {
+    position: relative;
+  }
+  
+  .select-btn {
+    width: 100%;
+    height: 45px;
+    padding: 0px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--orange);
+    color: #fff;
+    border: 1px solid rgba(41, 39, 36, 0.25);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .arrow {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+  .select-btn svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .select-box.open .select-btn svg {
+    transform: rotate(180deg);
+  }
+  
+  .select-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    padding: 6px;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    background: var(--orange-dark);
+    border: 1px solid rgba(41, 39, 36, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(41, 39, 36, 0.12);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: 0.25s ease;
+  }
+  
+  .select-box.open .select-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .select-menu li {
+    padding: 11px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                padding-left 0.25s ease;
+  }
+  
+  .select-menu li:hover,
+  .select-menu li.active {
+    background: var(--orange);
+    color: #E5D8C8;
+  }
+  
+  .select-menu li:hover {
+    padding-left: 16px;
+  }
+  
+.reset-filter button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 47px;
+    background-color: transparent;
+    border: none;
+    gap:20px;
+    padding: 0px 20px;
+    background: var(--green-light);
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid rgba(41, 39, 36, 0.25);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.reset-filter button:hover{
+  background: var(--orange);
+}
+.recipe-grid {
+    --primary-color: #F7F4EE;
+    --secondary-color: #E5D8C8;
+    --dark-color: #292724;
+    --brown-color: #55473D;
+    --star: #f5a623;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 20px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .recipe-grid .recipe-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* Image */
+  .recipe-grid .recipe-image {
+    position: relative;
+    aspect-ratio: 1 / 1.1;
+    background: var(--orange);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .recipe-grid .recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+
+  .recipe-grid .recipe-card:hover .recipe-image img {
+    transform: scale(1.25);
+  }
+
+  /* Wishlist */
+  .recipe-grid .wishlist-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(247, 244, 238, 0.9);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--brown-color);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .recipe-grid .wishlist-btn:hover {
+    background: var(--primary-color);
+    color: #d64545;
+  }
+
+  .recipe-grid .wishlist-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Text */
+  .recipe-grid .recipe-name {
+    margin: 12px 0 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--brown-color);
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .recipe-grid .recipe-description{
+    margin-top: 5px;
+    letter-spacing: 1px;
+    padding: 5px;
+  }
+  /* Price + button row */
+  .recipe-grid .recipe-buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .recipe-grid .recipe-price {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-color);
+    white-space: nowrap;
+  }
+
+  /* Rating */ 
+  .recipe-rating {
+    font-size: 12px;
+    color: var(--brown-color);
+  }
+  .recipe-rating p{
+    float: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+  }
+  .recipe-grid .recipe-rating .star {
+    color: var(--star);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  
+.nutrition-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 16px 12px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nutrition-item {
+    text-align: center;
+}
+
+.nutrition-item h5 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.nutrition-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #77736d;
+    font-weight: 500;
+}
+@media screen and (max-width: 650px) {
+  .filters{
+    flex-direction: column;
+    gap: 20px !important;
+  }
+  .rest-filter-label{
+    display: block;
+  }
+  .select-filter{
+    justify-content: space-between;
+    align-items: center;
+  }
+  .category__filter-search-box{
+    width: 100%;
+  }
+}

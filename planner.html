@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChefBox - Meal Planner & Recipe Guide</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS for Enhanced UI, Smooth Animations & Scrollbar -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Premium Custom Orange Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fff7ed;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #fb923c, #ea580c);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c2410c;
+    }
+
+    /* Firefox Custom Scrollbar */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #ea580c #fff7ed;
+    }
+
+    /* Smooth Dragging Shadow & Transitions */
+    .drag-over {
+      border-color: #f97316 !important;
+      background-color: #ffedd5 !important;
+      transform: scale(1.01);
+    }
+  </style>
+  <link rel="stylesheet" href="./style/style.css"/>
+</head>
+<body class="bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50  font-sans text-gray-800 antialiased">
+
+  <!-- Header -->
+  <header class="navbar">
+    <a href="./index.html" class="logo">Chef<span>Box.</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="nav-links">
+        ☰
+    </button>
+
+    <nav class="nav-links" id="nav-links">
+        <a href="./index.html">Home</a>
+        <a href="./category.html">Categories</a>
+        <a href="./index.html#recommendations">Recipes</a>
+        <a href="./planner.html" class="nav-active">Meal Planner</a>
+
+        <!-- Login Button -->
+        <a href="#login" class="login-btn">Login</a>
+    </nav>
+</header>
+
+  <section class="max-w-7xl mx-auto bg-white/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-all my-6 text-center border border-orange-100/80">
+    <div class="flex items-center justify-center gap-2">
+      <span class="text-3xl">🍳</span>
+      <h1 class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-orange-600 via-amber-600 to-rose-600 bg-clip-text text-transparent tracking-tight">
+        ChefBox
+      </h1>
+    </div>
+    <p class="text-xs font-semibold text-orange-800/70 mt-1 uppercase tracking-wider">Weekly Meal Planner & Interactive Recipe Guide</p>
+  </section>
+
+  <!-- Main 3-Column Layout -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 mb-10">
+
+    <!-- 1. LEFT SIDE (4 Cols): Monday to Sunday Calendar -->
+    <section class="lg:col-span-4 bg-white/85 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-lg border border-indigo-100 flex flex-col">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-lg">📅</span>
+        <h2 class="text-base font-extrabold text-indigo-900">Weekly Calendar</h2>
+      </div>
+      <p class="text-[11px] font-medium text-gray-500 mb-4">Click any day to view scheduled meals & step-by-step cooking instructions!</p>
+      
+      <div id="calendar-container" class="space-y-3 max-h-[640px] overflow-y-auto pr-1.5 scroll-smooth">
+        <!-- JS injects days here -->
+      </div>
+    </section>
+
+    <!-- 2. CENTRE (5 Cols): Master Menu List with Instructions -->
+    <section class="lg:col-span-5 bg-white/85 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-lg border border-orange-100 flex flex-col">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-lg">🍲</span>
+        <h2 class="text-base font-extrabold text-orange-900">Master Menu & Recipes</h2>
+      </div>
+      <p class="text-[11px] font-medium text-gray-500 mb-4">Drag dishes to calendar. Read full instructions below!</p>
+      
+      <div id="master-menu-container" class="space-y-4 max-h-[640px] overflow-y-auto pr-1.5 scroll-smooth">
+        <!-- JS injects menu categories here -->
+      </div>
+    </section>
+
+    <!-- 3. RIGHT SIDE (3 Cols): Grocery List -->
+    <section class="lg:col-span-3 bg-white/85 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-lg border border-amber-100 flex flex-col">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-lg">🛒</span>
+        <h2 class="text-base font-extrabold text-amber-900">Grocery List</h2>
+      </div>
+      <p class="text-[11px] font-medium text-gray-500 mb-4">Auto-generated shopping list for scheduled meals:</p>
+      
+      <ul id="grocery-list-container" class="space-y-2 max-h-[600px] overflow-y-auto text-xs text-gray-700 pr-1.5 scroll-smooth">
+        <li class="italic text-gray-400 p-3 bg-amber-50/50 rounded-xl border border-dashed border-amber-200 text-center">
+          No meals scheduled yet. Drag dishes to calendar!
+        </li>
+      </ul>
+    </section>
+
+  </main>
+<!-- Footer -->
+<footer class="footer">
+  <a href="./index.html" class="logo footer-logo">Chef<span>Box.</span></a>
+  <p>Good food. Good mood. Every day.</p>
+  <p class="copyright">© 2026 ChefBox. Made with care.</p>
+</footer>
+
+<script src="./script/script.js"></script>
+  <script src="./script/planner.js"></script>
+</body>
+</html>
