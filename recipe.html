@@ -9,13 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./style/style.css"/>
+  <link rel="icon" type="image/png" href="./images/chefs-hat.png">
 <style>
     :root{--orange:#c9632d;--orange-dark:#9e431f;--cream:#fffaf1;--ink:#24201d;--muted:#71675f;--line:#ead7c5;--soft:#fff2e4;--shadow:0 12px 30px rgba(89,45,17,.12)}
     *{box-sizing:border-box}
     html{scroll-behavior:auto}
     body{margin:0;height:100vh;overflow:hidden;font-family:Roboto,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#f7e2c8,#f8c49b 48%,#e99a63);}
-    .topbar{position:relative;z-index:10;min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px clamp(18px,4vw,56px);background:linear-gradient(115deg,#55220f 0%,#9e431f 48%,#d8753b 100%);border-bottom:5px solid #f6c27b;box-shadow:0 8px 24px rgba(65,27,10,.25);color:#fff}
-    .brand{display:flex;align-items:center;gap:13px;font-size:clamp(20px,2vw,28px);font-weight:800;letter-spacing:-.6px;color:#fff}.brand-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#fff4e5;color:#9e431f;box-shadow:0 6px 14px #3c180b50}.brand-icon i{font-size:24px}.brand-copy{display:flex;flex-direction:column;gap:5px}.brand-subtitle{font-size:11px;font-weight:500;letter-spacing:.7px;color:#ffe3c4}.header-right{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 14px;border:1px solid #ffffff50;border-radius:14px;background:#55220f55}.select-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#ffe5c7}
+    .topbar{position:relative;z-index:10;min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px clamp(30px,vw,70px);background:linear-gradient(115deg,#55220f 0%,#9e431f 48%,#d8753b 100%);border-bottom:5px solid #f6c27b;box-shadow:0 8px 24px rgba(65,27,10,.25);color:#fff}
+    .brand{  display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 15px;
+};font-size:clamp(20px,2vw,28px);font-weight:800;letter-spacing:-.6px;color:#fff}.brand-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#fff4e5;color:#9e431f;box-shadow:0 6px 14px #3c180b50}.brand-icon i{font-size:24px}.brand-copy{display:flex;flex-direction:column;gap:5px}.brand-subtitle{font-size:11px;font-weight:500;letter-spacing:.7px;color:#ffe3c4}.header-right{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 14px;border:1px solid #ffffff50;border-radius:14px;background:#55220f55}.select-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#ffe5c7}
     .dish-select{min-width:220px;max-width:100%;padding:12px 15px;border:1px solid #d4a17c;border-radius:12px;background:#fffdf9;color:#2a211b;font:600 15px Roboto,Arial,sans-serif;box-shadow:0 3px 10px #8d4b2512;outline-color:var(--orange)}
     .page{width:min(1700px,100%);height:calc(100vh - 116px);margin:0 auto;padding:12px clamp(12px,2vw,28px) 8px;display:flex;flex-direction:column;overflow:hidden}
     .layout{display:grid;grid-template-columns:minmax(230px,.9fr) minmax(330px,1.45fr) minmax(260px,.95fr);gap:14px;align-items:stretch;flex:1;min-height:0}
@@ -78,6 +83,62 @@
       .footer{margin-top:5px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* Desktop Header Visibility Fix */
+.topbar {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+    z-index: 1000;
+    flex-shrink: 0;
+}
+
+@media (min-width: 1051px) {
+    .topbar {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand,
+    .header-right,
+    .brand-copy,
+    .brand-icon {
+        display: flex;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+/* Desktop Footer Fix */
+@media (min-width: 1051px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .page {
+        height: auto;
+        min-height: calc(100vh - 116px);
+        overflow: visible;
+    }
+
+    .layout {
+        flex: none;
+        min-height: 600px;
+    }
+
+    .footer {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+        flex-shrink: 0;
+    }
+}
   </style>
 </head>
 <body>
